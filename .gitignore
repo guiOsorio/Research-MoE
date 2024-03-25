@@ -2,4 +2,4 @@
 .DS_Store
 
 # Ignore files starting with a tilde (~)
-~*
+~$*
