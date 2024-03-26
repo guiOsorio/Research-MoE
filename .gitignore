@@ -1,5 +1,0 @@
-# Ignore macOS system files
-.DS_Store
-
-# Ignore files starting with a tilde (~)
-~$*
