@@ -1,7 +1,7 @@
 # Research-MoE
 
 ## Understanding MoE
-- Learning Factorized Representations in a Deep Mixture-of-Experts
+- [Learning Factorized Representations in a Deep Mixture-of-Experts](https://arxiv.org/abs/1312.4314) (December 2013)
 - Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer
 - HuggingFace MoE Article
 - Towards Understanding MoE
