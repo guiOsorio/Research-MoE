@@ -2,8 +2,8 @@
 
 ## Understanding MoE
 - [Learning Factorized Representations in a Deep Mixture-of-Experts](https://arxiv.org/abs/1312.4314) (December 2013)
-- Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer
-- HuggingFace MoE Article
+- [Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer](https://arxiv.org/abs/1701.06538) (January 2017)
+- [HuggingFace MoE Article](https://huggingface.co/blog/moe) (December 2023)
 - Towards Understanding MoE
 - OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models
 
