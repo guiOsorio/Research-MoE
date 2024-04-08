@@ -3,7 +3,7 @@
 ## Understanding MoE
 - Learning Factorized Representations in a Deep Mixture-of-Experts
 - Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer
-- MoE Architecture
+- HuggingFace MoE Article
 - Towards Understanding MoE
 - OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models
 
@@ -12,46 +12,47 @@
 - DSelect-k: Differentiable Selection in the Mixture of Experts with Applications to Multi-Task Learning
 - Hash Layers for Large Sparse Models
 - Mixture-of-Experts with Expert Choice Routing
-- From Sparse to Sparse: Mixture of Experts Cross-Example Aggregation
-- MixMoE: Stable Routing Strategy for Mixture of Experts
-- StabLeNet: Experts’ Stability on MoE
-
-## Deep & Stable MoE
-- ScalableMoE: Towards Ultimate Expert Specialization in Mixture-of-Experts Language Models
+- From Sparse to Soft Mixture of Experts
+- Mixture-of-Tokens: Efficient LLMs Through Cross-Example Aggregation
+- StableMoE: Stable Routing Strategy for Mixture of Experts
+- Mixtral of Experts (+Mistral 7B)
+- DeepSeekMoE: Towards Ultimate Expert Specialization in Mixture-of-Experts Language Models
 
 ## Scaling & Stability
-- Switch: Scaling Giant Models with Conditional Computation and Automatic Sharding
-- GShard Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity
+- GShard: Scaling Giant Models with Conditional Computation and Automatic Sharding
+- Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity
 - GLaM: Efficient Scaling of Language Models with Mixture-of-Experts
 - ST-MoE: Designing Stable and Transferable Sparse Expert Models
-- Unified Scaling Laws For Routed Language Models
-- Efficent Large Scale Language Modeling with Mixture of Experts
-
-## Task/Doman-level MoE
+- Unified Scaling Laws for Routed Language Models
+- Efficient Large Scale Language Modeling with Mixtures of Experts
+- 
+## Task/Domain-level MoE
 - Beyond Distillation: Task-level Mixture-of-Experts for Efficient Inference
-- Expert Gate: Scaling Large-scale Generative Language Modeling
-- DEMix Layers: Domain-Level Mixture of Experts for Efficient Adaptation
-- Expert Deviation: Scaling Expert Language Models with Unsupervised Domain Discovery
+- Expert Gate: Lifelong Learning with a Network of Experts
+- DEMix Layers: Disentangling Domains for Modular Language Modeling
+- Branch-Train-Merge: Embarrassingly Parallel Training of Expert Language Models
+- Scaling Expert Language Models with Unsupervised Domain Discovery
 - Exploring the Benefits of Training Expert Language Models over Instruction Tuning
 
 ## MoE Efficiency
 - MegaBlocks: Efficient Sparse Training with Mixture-of-Experts
-- Fast Feedback: Efficient Networks + Exponentially Faster Language Modeling
+- Fast Feedforward Networks + Exponentially Faster Language Modeling
 - Parameter-Efficient Mixture-of-Experts Architecture for Pre-Trained Language Models
-- Pushing Forward MoE-Experts to the Limit: Extremely Parameter-Efficient MoE for Instruction Tuning
+- Pushing Mixture-of-Experts to the Limit: Extremely Parameter Efficient MoE for Instruction Tuning
 - Parameter-Efficient Sparsity Crafting from Dense to Mixture-of-Experts for Instruction Tuning on General Tasks
 - QMoE: Practical Sub-1-Bit Compression of Trillion-Parameter Models
-
-## Fast-Inference MoE
 - Fast-Inference of Mixture-of-Experts Language Models with Offloading
 
 ## Hybrid Approaches
 - Sparse Upcycling: Training Mixture-of-Experts from Dense Checkpoints
 - EvoMoE: An Evolutional Mixture-of-Experts Training Framework via Dense-To-Sparse Gate
 - Soft Merging of Experts with Adaptive Routing
-- Bloc-Mamba: Efficient Selective State Space Models with Mixture of Experts
-- MaE: MaE: Mixture of Experts for Space-Models
+- MoE-Mamba: Efficient Selective State Space Models with Mixture of Experts
+- BlackMamba: Mixture of Experts for State-Space Models
 - Mixture-of-Experts Meets Instruction Tuning: A Winning Combination for Large Language Models
+
+
+
 
 
 # TO BE ADDED IN THE FUTURE
