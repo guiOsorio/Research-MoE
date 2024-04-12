@@ -69,6 +69,7 @@ Sparsification and Quantization](https://arxiv.org/abs/2311.13171) (November 202
 - [Fusing Models With Complementary Expertise](https://arxiv.org/abs/2310.01542) (October 2023)
 - [Divide and Not Forget: Ensemble of Selectively Trained Experts in Continual Learning](https://arxiv.org/abs/2401.10191) (January 2024)
 - [Branch-Train-MiX: Mixing Expert LLMs into a Mixture-of-Experts LLM](https://arxiv.org/abs/2403.07816) (March 2024)
+- [Dense Training, Sparse Inference: Rethinking Training of Mixture-of-Experts Language Models](https://arxiv.org/abs/2404.05567) (April 2024)
 
 ## Multimodal MoE
 - [Multimodal Constractive Learning with LIMoE: the Language-Image Mixture of Experts](https://arxiv.org/abs/2206.02770) (June 2022)
