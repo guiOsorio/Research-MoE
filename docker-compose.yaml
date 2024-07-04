@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  chatbot:
+    image: moe-chatbot:latest
+    build:
+      context: .
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
