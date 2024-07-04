@@ -7,21 +7,19 @@
 # command to check what is running on port 8000: sudo lsof -i :8000
 # command to kill what is running on a port: sudo kill -9 [PID]
 
-import sys
+# Public imports
 import os
-# print(f"HERE {sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))}")
-
-
+from openai import OpenAI
+from dotenv import load_dotenv
 from fastapi import FastAPI, Request, Form
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
+
+# Private imports
 from chatbot.services.search import search_chunks
 from chatbot.services.embedding import get_embedding
 from chatbot.services.prompt import get_system_prompt, get_turn_prompt
-from openai import OpenAI
-
-from dotenv import load_dotenv
 
 # Define the root path of the project
 ROOT_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
