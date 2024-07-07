@@ -1,9 +1,12 @@
+# Public imports
 from pinecone import Pinecone
 import sqlite3
 import os
 from typing import List
-from chatbot.services.embedding import get_embedding
 from dotenv import load_dotenv
+
+# Private imports
+from chatbot.services.embedding import get_embedding
 
 # Define the root path of the project
 ROOT_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), '../..'))
