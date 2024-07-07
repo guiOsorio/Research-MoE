@@ -1,5 +1,6 @@
 ## Preprocesses contents of notes and papers into chunks, then inserts these chunks into a Pinecone Index
 
+# Public imports
 import os
 import docx
 import fitz  # PyMuPDF
