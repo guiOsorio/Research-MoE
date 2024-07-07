@@ -7,6 +7,9 @@ WORKDIR /usr/src/app
 # Copy the FastAPI application code into the container at /usr/src/app
 COPY ./chatbot ./chatbot
 
+# Copy the templates directory
+COPY ./templates ./templates
+
 # Copy the Poetry configuration files into the container at /usr/src/app
 COPY pyproject.toml poetry.lock ./
 
