@@ -5,6 +5,7 @@
 - [Learning Factorized Representations in a Deep Mixture-of-Experts](https://arxiv.org/abs/1312.4314) (December 2013)
 - [Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer](https://arxiv.org/abs/1701.06538) (January 2017)
 - [Towards Understanding MoE](https://arxiv.org/abs/2208.02813) (August 2022)
+- [A Review of Sparse Expert Models in Deep Learning](https://arxiv.org/abs/2209.01667) (September 2022)
 - [HuggingFace MoE Article](https://huggingface.co/blog/moe) (December 2023)
 - [OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models](https://arxiv.org/abs/2402.01739) (January 2024)
 
