@@ -1,6 +1,7 @@
 # Research-MoE
 
 ## Understanding MoE
+- [Adaptive Mixture of Local Experts](https://www.cs.toronto.edu/~hinton/absps/jjnh91.pdf)(July 1990)
 - [Learning Factorized Representations in a Deep Mixture-of-Experts](https://arxiv.org/abs/1312.4314) (December 2013)
 - [Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer](https://arxiv.org/abs/1701.06538) (January 2017)
 - [Towards Understanding MoE](https://arxiv.org/abs/2208.02813) (August 2022)
