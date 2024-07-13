@@ -9,6 +9,9 @@ from pinecone import Pinecone
 import sqlite3
 from dotenv import load_dotenv
 
+# Private imports
+from paper_names import paper_names
+
 load_dotenv(dotenv_path="../.env")
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 client = OpenAI()
@@ -59,12 +62,12 @@ def get_embedding(text, model="text-embedding-3-small"):
    return client.embeddings.create(input = [text], model=model).data[0].embedding
 
 # Function to insert chunk data into the database
-def insert_chunk(chunk_id, content):
+def insert_chunk(chunk_id, content, source_name, source_url):
     conn = sqlite3.connect('../chunks.db')
     cursor = conn.cursor()
     cursor.execute('''
-    INSERT INTO chunks (chunk_id, content) VALUES (?, ?)
-    ''', (chunk_id, content))
+    INSERT INTO chunks (chunk_id, content, source_name, source_url) VALUES (?, ?, ?, ?)
+    ''', (chunk_id, content, source_name, source_url))
     conn.commit()
     conn.close()
 
@@ -78,18 +81,35 @@ file_contents = {}
 for root, dirs, files in os.walk(directory):
     for file in files:
         file_path = os.path.join(root, file)
-        if file.endswith('.docx'):
+        if file in ('MoE Notes FINAL.docx', 'MoE Notes.docx'):
             content = read_docx(file_path)
-            file_contents[file] = content
+            file_contents[file] = {}
+            file_contents[file]["content"] = content
         elif file.endswith('.pdf'):
             content = read_pdf(file_path)
-            file_contents[file] = content
+            file_contents[file] = {}
+            file_contents[file]["content"] = content
+
+# Add metadata to file's info
+for (file, content) in paper_names.items():
+    if (file in ('MoE Notes FINAL.docx', 'MoE Notes.docx')) or (file.endswith('.pdf')):
+        file_contents[file]['source_name'] = content[0]
+        file_contents[file]['source_url'] = content[1]
 
 # Chunk file contents
-chunked_contents = {}
+chunked_contents = {
+    key: {
+        'chunks': [],
+        'source_name': '',
+        'source_url': ''
+    }
+    for key in file_contents.keys()
+}
 for file, content in file_contents.items():
-    chunks = chunk_text(content)
-    chunked_contents[file] = chunks
+    chunks = chunk_text(content['content'])
+    chunked_contents[file]['chunks'] = chunks
+    chunked_contents[file]['source_name'] = file_contents[file]['source_name']
+    chunked_contents[file]['source_url'] = file_contents[file]['source_url']
 
 # Connect to SQLite database (it will create the database file if it doesn't exist)
 conn = sqlite3.connect('../chunks.db')
@@ -102,9 +122,11 @@ DROP TABLE IF EXISTS chunks
 
 # Create a table to store chunks
 cursor.execute('''
-CREATE TABLE IF NOT EXISTS chunks (
+CREATE TABLE chunks (
     chunk_id TEXT PRIMARY KEY,
-    content TEXT
+    content TEXT,
+    source_name TEXT,
+    source_url TEXT
 )
 ''')
 
@@ -113,14 +135,15 @@ conn.commit()
 conn.close()
 
 
-for file, chunks in chunked_contents.items():
-    print(file)
-    for i, chunk in enumerate(chunks):
+for file, contents in chunked_contents.items():
+    source_name = contents['source_name']
+    source_url = contents['source_url']
+    for i, chunk in enumerate(contents['chunks']):
         chunk_id = f"{file}_chunk_{i}"
         # SQLite3 insert
-        insert_chunk(chunk_id, chunk)
+        insert_chunk(chunk_id, chunk, source_name, source_url)
         # Pinecone insert
-        metadata = {"file_name": file}
+        metadata = {"file_name": file, "source_name": source_name, "source_url": source_url}
         embed = get_embedding(chunk)
         upsert_response = index.upsert(
             vectors=[
