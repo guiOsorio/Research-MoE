@@ -9,6 +9,7 @@
 
 # Public imports
 import os
+import markdown
 from openai import OpenAI
 from dotenv import load_dotenv
 from fastapi import FastAPI, Request, Form
@@ -45,7 +46,13 @@ async def read_root(request: Request):
 async def handle_form(request: Request, question: str = Form(...)):
     # Get relevant info to feed to the chatbot
     resources = search_chunks(question)
-    resources_str = "\n".join(resources)
+    resources_str = ""
+    for k in resources.keys():
+        chunk_content = resources[k]['chunk_content']
+        source_name = resources[k]['source_name']
+        source_url = resources[k]['source_url']
+        resource_str = f"""CHUNK CONTENT: {chunk_content}\nSOURCE NAME: {source_name}\nSOURCE URL: {source_url}\n\n\n"""
+        resources_str += resource_str
 
     # Get the prompts
     system_prompt = get_system_prompt()
@@ -64,4 +71,7 @@ async def handle_form(request: Request, question: str = Form(...)):
 
     answer = response.choices[0].message.content
 
-    return templates.TemplateResponse("index.html", {"request": request, "answer": answer})
+    # Convert Markdown to HTML
+    answer_html = markdown.markdown(answer)
+
+    return templates.TemplateResponse("index.html", {"request": request, "answer": answer_html})

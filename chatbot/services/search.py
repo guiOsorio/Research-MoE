@@ -23,7 +23,7 @@ index = pc.Index(host=PINECONE_INDEX_HOST)
 # Connect to SQLite database
 conn = sqlite3.connect(os.path.join(ROOT_PATH, 'chunks.db'))
 
-def search_chunks(query: str, top_k: int = 10) -> List[str]:
+def search_chunks(query: str, top_k: int = 16) -> List[str]:
     """
     Search for the most relevant chunks based on the query.
     """
@@ -34,17 +34,22 @@ def search_chunks(query: str, top_k: int = 10) -> List[str]:
     search_results = index.query(
         vector=query_embedding,
         top_k=top_k,
-        include_metadata=False
+        include_metadata=True
     )
 
     # Retrieve content from SQLite based on search results
-    resources = []
+    resources = {}
     for match in search_results['matches']:
         chunk_id = match['id']
+        resources[chunk_id] = {}
         content = get_chunk_content(chunk_id)
+        chunk_content = content[0]
+        source_name = content[1]
+        source_url = content[2]
         if content:
-            resources.append(content)
-
+            resources[chunk_id]['chunk_content'] = chunk_content
+            resources[chunk_id]['source_name'] = source_name
+            resources[chunk_id]['source_url'] = source_url
     return resources
 
 def get_chunk_content(chunk_id: str) -> str:
@@ -52,6 +57,6 @@ def get_chunk_content(chunk_id: str) -> str:
     Retrieve the content of a chunk from SQLite based on the chunk_id.
     """
     cursor = conn.cursor()
-    cursor.execute('SELECT content FROM chunks WHERE chunk_id = ?', (chunk_id,))
+    cursor.execute('SELECT content, source_name, source_url FROM chunks WHERE chunk_id = ?', (chunk_id,))
     result = cursor.fetchone()
-    return result[0] if result else None
+    return result if result else None

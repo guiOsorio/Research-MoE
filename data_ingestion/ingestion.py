@@ -2,7 +2,6 @@
 
 # Public imports
 import os
-import docx
 import fitz  # PyMuPDF
 from openai import OpenAI
 from pinecone import Pinecone
@@ -20,18 +19,6 @@ PINECONE_API_KEY = os.getenv('PINECONE_API_KEY')
 PINECONE_INDEX_HOST = os.getenv('PINECONE_INDEX_HOST')
 pc = Pinecone(api_key=PINECONE_API_KEY)
 index = pc.Index(host=PINECONE_INDEX_HOST)
-
-# Function to read .docx files
-def read_docx(file_path):
-    try:
-        doc = docx.Document(file_path)
-        full_text = []
-        for para in doc.paragraphs:
-            full_text.append(para.text)
-        return '\n'.join(full_text)
-    except Exception as e:
-        print(f"Error reading {file_path}: {e}")
-        return ""
     
 
 # Function to read .pdf files
@@ -81,18 +68,14 @@ file_contents = {}
 for root, dirs, files in os.walk(directory):
     for file in files:
         file_path = os.path.join(root, file)
-        if file in ('MoE Notes FINAL.docx', 'MoE Notes.docx'):
-            content = read_docx(file_path)
-            file_contents[file] = {}
-            file_contents[file]["content"] = content
-        elif file.endswith('.pdf'):
+        if file.endswith('.pdf'):
             content = read_pdf(file_path)
             file_contents[file] = {}
             file_contents[file]["content"] = content
 
 # Add metadata to file's info
 for (file, content) in paper_names.items():
-    if (file in ('MoE Notes FINAL.docx', 'MoE Notes.docx')) or (file.endswith('.pdf')):
+    if file.endswith('.pdf'):
         file_contents[file]['source_name'] = content[0]
         file_contents[file]['source_url'] = content[1]
 
