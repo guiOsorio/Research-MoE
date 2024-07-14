@@ -1,5 +1,6 @@
 paper_names = {'MoE Notes.docx': ("MoE NOTES", "https://github.com/guiOsorio/Research-MoE/blob/master/research/MoE%20Notes.docx"),
  'MoE Notes FINAL.docx': ("MoE NOTES FINAL", "https://github.com/guiOsorio/Research-MoE/blob/master/research/MoE%20Notes%20FINAL.docx"),
+  'Adaptive_Mixture_of_Local_Experts.pdf': ("Adaptive Mixture of Local Experts", "https://www.cs.toronto.edu/~hinton/absps/jjnh91.pdf"),
  'Unified_Scaling_Laws_NOTES.pdf': ("Unified Scaling Laws for Routes Language Models NOTES", "https://github.com/guiOsorio/Research-MoE/blob/master/research/Scaling_and_Stability/Unified_Scaling_Laws_NOTES.pdf"),
  'Switch_Transformers.pdf': ("Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity", "https://arxiv.org/abs/2101.03961"),
  'ST_MoE.docx': ("ST-MoE: Designing Stable and Transferable Sparse Expert Models", "https://arxiv.org/abs/2202.08906"),
