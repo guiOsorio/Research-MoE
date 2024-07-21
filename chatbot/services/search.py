@@ -1,3 +1,5 @@
+## Deals with embedding search through Pinecone
+
 # Public imports
 from pinecone import Pinecone
 import sqlite3
