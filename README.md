@@ -17,15 +17,15 @@
 
 | Layer | Technology |
 |-------|------------|
-| API & Web | **Python 3.12**, **FastAPI**, **Pydantic v2** |
+| API & Web | **Python 3.11**, **FastAPI**, **Pydantic v2** |
 | Retrieval | **Pinecone** (hybrid vector + BM25, MMR diversification) |
 | LLM | **OpenAI** – `text-embedding-3-small`, `chat.completions` |
-| Build / Image | **Bazel** (`rules_python`, `rules_docker`) |
+| Build / Image | **Poetry** |
 | Runtime | **Kubernetes** (kind/minikube) |
 | Memory | In-process deque (swappable to Redis) |
 | Evaluation | **LangSmith** — LLM-judge metrics, deep traces |
 | Telemetry | **Datadog** — latency, token counts, chunk IDs |
-| CI/CD | **GitHub Actions** — Bazel test ➜ build |
+| CI/CD | **GitHub Actions** — Poetry test ➜ build |
 
 ---
 
@@ -37,8 +37,8 @@
 |------|---------|
 | Docker | 24+ |
 | kind **or** minikube | latest |
-| Bazelisk | 1.19+ |
-| Python | 3.12 |
+| Poetry | 2.1.3 |
+| Python | 3.11 |
 
 ### 2. Clone + Env Vars
 
