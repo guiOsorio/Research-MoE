@@ -54,7 +54,7 @@ The ingestion job parses all PDFs/notes under `research/`, splits them into
 overlapping chunks, embeds with OpenAI, then upserts into Pinecone and a local
 `chunks.db` SQLite table.
 
-### 1 · Create / activate an environment with the `ingest` group
+### 1. Create / activate an environment with the `ingest` group
 
 ```bash
 # install runtime deps + ingestion extras
