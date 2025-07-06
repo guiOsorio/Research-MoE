@@ -6,7 +6,7 @@ from typing import List
 from dotenv import load_dotenv
 
 # Private imports
-from chatbot.services.embedding import get_embedding
+import chatbot.services.embedding.get_embedding
 
 # Define the root path of the project
 ROOT_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), '../..'))

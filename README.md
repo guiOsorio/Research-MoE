@@ -7,7 +7,7 @@
 
 ## 📐 Architecture
 
-![Runtime Architecture](architecture_diagram.png)
+![Runtime Architecture](docs/architecture_diagram.png)
 
 <sub>All components run locally in a kind/minikube cluster; external SaaS services remain in the cloud.</sub>
 
@@ -46,3 +46,15 @@
 git clone <your-fork-url>
 cd <repo>
 cp .env.template .env          # fill API keys
+
+## 📜 Running the Ingestion Pipeline (one-time)
+
+The ingestion job parses all PDFs/notes under `research/`, splits them into
+overlapping chunks, embeds with OpenAI, then upserts into Pinecone and a local
+`chunks.db` SQLite table.
+
+### 1 · Create / activate an environment with the `ingest` group
+
+```bash
+# install runtime deps + ingestion extras
+poetry install --with ingest
