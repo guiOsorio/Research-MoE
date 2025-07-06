@@ -46,6 +46,7 @@
 git clone <your-fork-url>
 cd <repo>
 cp .env.template .env          # fill API keys
+```
 
 ## 📜 Running the Ingestion Pipeline (one-time)
 
@@ -58,3 +59,4 @@ overlapping chunks, embeds with OpenAI, then upserts into Pinecone and a local
 ```bash
 # install runtime deps + ingestion extras
 poetry install --with ingest
+```
